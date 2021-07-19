@@ -1,0 +1,72 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed May  1 22:04:16 2019
+
+@author: faver
+"""
+
+def pruef_rate(rate, antwort):
+    global punkte
+    noch_rate= True
+    versuch=0
+    while noch_rate and versuch < 3:
+        if rate.lower() == antwort.lower():
+            print('Richtige Antwort')
+            punkte=punkte +3 - versuch
+            noch_rate=False
+        else:
+            if versuch < 2:
+                rate = input('Falsch. Versuche es erneut ')
+        versuch= versuch +1
+        
+    if versuch ==3:
+        print('Die richtige Antwort ist ' + antwort)
+
+def pruef_rate_logik(rate, antwort):
+    global punkte
+    noch_rate= True
+    versuch=0
+    while noch_rate and versuch < 1:
+        if rate.lower() == antwort.lower():
+            print('Richtige Antwort')
+            punkte=punkte +3 - versuch
+            noch_rate=False
+        if rate.lower() != antwort.lower():
+            print('Die richtige Antwort ist ' + antwort)
+            punkte=punkte - 1
+            versuch =versuch +1
+
+def pruef_rate_M_choice(rate, antwort):
+    global punkte
+    noch_rate= True
+    versuch=0
+    while noch_rate and versuch < 2:
+        if rate.lower() == antwort.lower():
+            print('Richtige Antwort')
+            punkte=punkte +3 - versuch
+            noch_rate=False
+        else:
+            if versuch < 1:
+                rate = input('Falsch. Versuche es erneut ')
+        versuch= versuch +1
+        
+    if versuch ==2:
+        print('Die richtige Antwort ist ' + antwort)
+
+punkte= 0
+print ('Rate das Tier')
+
+rate1= input('Welcher Bär lebt am Nordpol? ')
+pruef_rate(rate1, 'Eisbär')
+rate2= input('Was ist das schnellste Landtier? ')
+pruef_rate(rate2, 'Gepard')
+rate3= input('Was ist das größte Tier? ')
+pruef_rate(rate3, 'Blauwal')
+rate4= input('Welches Tier lebt in der Amazonas?\n \
+A) Dolphin\n B) Felix Felicious\n C) Piranha\n D) Rotfuchs\n \
+Schreibe A, B, C oder D ')
+pruef_rate_M_choice(rate4, 'C')
+rate5= input('Sind Vögel Dinosaurier. Richtig oder Falsch? ')
+pruef_rate_logik(rate5, 'Falsch')
+
+print('Deine punktzahl ist ' + str(punkte))
